@@ -1,8 +1,8 @@
-# TC Synthetic Progress Dashboard
+# TC Synthetic Project Dashboard
 
-Last updated: **2026-03-06 02:53 UTC**
+Last updated: **2026-03-06 03:08 UTC**
 
-## Snapshot
+## Progress
 
 | Item | Value |
 |---|---:|
@@ -11,7 +11,7 @@ Last updated: **2026-03-06 02:53 UTC**
 | Smoke corrected fields | 1 |
 | Latest artifact time | 2026-03-05 17:45 UTC |
 
-## Quick Visualization
+### Artifact Overview
 
 ```mermaid
 pie title Artifact Counts
@@ -20,7 +20,7 @@ pie title Artifact Counts
     "Smoke corrected" : 1
 ```
 
-## Training Metrics
+### Training Metrics
 
 - `model_kind`: `hgbt`
 - `n_pairs`: `1`
@@ -29,6 +29,18 @@ pie title Artifact Counts
 - `n_train`: `27885`
 - `n_val`: `0`
 - `train_rmse`: `0.38896646983352734`
+
+## Results
+
+Generated result samples: **1**
+
+### AL012001_0605_1930
+
+- Land RMSE baseline: `8.1389`
+- Land RMSE corrected: `0.389`
+- RMSE improvement: `7.7499`
+
+![AL012001_0605_1930](figures/AL012001_0605_1930_compare.png)
 
 ## Pipeline Paths
 
