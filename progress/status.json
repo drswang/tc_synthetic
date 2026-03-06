@@ -1,0 +1,17 @@
+{
+  "corrected_count": 0,
+  "latest_artifact_utc": "2026-03-05 17:45 UTC",
+  "metrics": {
+    "model_kind": "hgbt",
+    "n_missed_pairs": 1964,
+    "n_pairs": 1,
+    "n_samples": 27885,
+    "n_train": 27885,
+    "n_val": 0,
+    "train_rmse": 0.38896646983352734
+  },
+  "pipeline_root": "/lustre/swx/users/3258/sandbox/systhetic_tc_downscale",
+  "real_baseline_count": 1,
+  "smoke_corrected_count": 1,
+  "updated_utc": "2026-03-06 02:53 UTC"
+}
