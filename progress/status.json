@@ -1,6 +1,6 @@
 {
   "corrected_count": 0,
-  "latest_artifact_utc": "2026-03-06 22:13 UTC",
+  "latest_artifact_utc": "2026-04-16 23:17 UTC",
   "metrics": {
     "feature_names": [
       "baseline_speed",
@@ -16,7 +16,7 @@
     "n_val": 0,
     "train_rmse": 0.36123000859155135
   },
-  "pipeline_root": "/lustre/swx/users/3258/sandbox/systhetic_tc_downscale",
+  "pipeline_root": "/lustre/swx/users/3258/sandbox/synthetic_tc_downscale",
   "real_baseline_count": 1,
   "results_summary": {
     "n_samples": 1,
@@ -29,8 +29,8 @@
         "sample_id": "AL012001_0605_1930"
       }
     ],
-    "updated_utc": "2026-04-16 20:03 UTC"
+    "updated_utc": "2026-04-16 23:18 UTC"
   },
   "smoke_corrected_count": 1,
-  "updated_utc": "2026-04-16 20:03 UTC"
+  "updated_utc": "2026-04-16 23:18 UTC"
 }

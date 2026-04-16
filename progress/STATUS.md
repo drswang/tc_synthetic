@@ -1,6 +1,6 @@
 # TC Synthetic Project Dashboard
 
-Last updated: **2026-04-16 20:03 UTC**
+Last updated: **2026-04-16 23:18 UTC**
 
 ## Progress
 
@@ -9,7 +9,7 @@ Last updated: **2026-04-16 20:03 UTC**
 | Real baseline fields generated | 1 |
 | Corrected synthetic fields | 0 |
 | Smoke corrected fields | 1 |
-| Latest artifact time | 2026-03-06 22:13 UTC |
+| Latest artifact time | 2026-04-16 23:17 UTC |
 
 ### Artifact Overview
 
@@ -44,8 +44,8 @@ Generated result samples: **1**
 
 ## Pipeline Paths
 
-- Pipeline root: `/lustre/swx/users/3258/sandbox/systhetic_tc_downscale`
-- Real baseline dir: `/lustre/swx/users/3258/sandbox/systhetic_tc_downscale/data/real_baseline_from_hwind`
-- Model dir: `/lustre/swx/users/3258/sandbox/systhetic_tc_downscale/outputs/model`
-- Corrected dir: `/lustre/swx/users/3258/sandbox/systhetic_tc_downscale/outputs/corrected`
+- Pipeline root: `/lustre/swx/users/3258/sandbox/synthetic_tc_downscale`
+- Real baseline dir: `/lustre/swx/users/3258/sandbox/synthetic_tc_downscale/data/real_baseline_from_hwind`
+- Model dir: `/lustre/swx/users/3258/sandbox/synthetic_tc_downscale/outputs/model`
+- Corrected dir: `/lustre/swx/users/3258/sandbox/synthetic_tc_downscale/outputs/corrected`
 
