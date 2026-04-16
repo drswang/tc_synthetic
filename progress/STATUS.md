@@ -1,6 +1,6 @@
 # TC Synthetic Project Dashboard
 
-Last updated: **2026-03-06 03:08 UTC**
+Last updated: **2026-04-16 20:03 UTC**
 
 ## Progress
 
@@ -9,7 +9,7 @@ Last updated: **2026-03-06 03:08 UTC**
 | Real baseline fields generated | 1 |
 | Corrected synthetic fields | 0 |
 | Smoke corrected fields | 1 |
-| Latest artifact time | 2026-03-05 17:45 UTC |
+| Latest artifact time | 2026-03-06 22:13 UTC |
 
 ### Artifact Overview
 
@@ -28,7 +28,7 @@ pie title Artifact Counts
 - `n_samples`: `27885`
 - `n_train`: `27885`
 - `n_val`: `0`
-- `train_rmse`: `0.38896646983352734`
+- `train_rmse`: `0.36123000859155135`
 
 ## Results
 
@@ -37,8 +37,8 @@ Generated result samples: **1**
 ### AL012001_0605_1930
 
 - Land RMSE baseline: `8.1389`
-- Land RMSE corrected: `0.389`
-- RMSE improvement: `7.7499`
+- Land RMSE corrected: `0.3612`
+- RMSE improvement: `7.7776`
 
 ![AL012001_0605_1930](figures/AL012001_0605_1930_compare.png)
 

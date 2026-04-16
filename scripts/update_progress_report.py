@@ -33,6 +33,12 @@ def load_json(path):
         return json.load(f)
 
 
+def resolve_pipeline_root(cli_value):
+    if cli_value:
+        return cli_value
+    return os.environ.get("TC_PIPELINE_ROOT", "/lustre/swx/users/3258/sandbox/systhetic_tc_downscale")
+
+
 def build_report(repo_root, pipeline_root):
     now = dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
 
@@ -43,12 +49,14 @@ def build_report(repo_root, pipeline_root):
 
     metrics_path = os.path.join(model_dir, "train_metrics.json")
     model_path = os.path.join(model_dir, "land_correction_model.pkl")
+    results_summary_path = os.path.join(repo_root, "progress", "results_summary.json")
 
     real_count = count_files(os.path.join(real_dir, "*_wind_footprint.nc"))
     corr_count = count_files(os.path.join(corr_dir, "*_landcorr.nc"))
     smoke_count = count_files(os.path.join(smoke_dir, "*_landcorr.nc"))
 
     metrics = load_json(metrics_path)
+    results = load_json(results_summary_path)
 
     latest_artifact_time = latest_mtime(
         [metrics_path, model_path]
@@ -57,11 +65,11 @@ def build_report(repo_root, pipeline_root):
     )
 
     lines = []
-    lines.append("# TC Synthetic Progress Dashboard")
+    lines.append("# TC Synthetic Project Dashboard")
     lines.append("")
     lines.append("Last updated: **{}**".format(now))
     lines.append("")
-    lines.append("## Snapshot")
+    lines.append("## Progress")
     lines.append("")
     lines.append("| Item | Value |")
     lines.append("|---|---:|")
@@ -70,7 +78,8 @@ def build_report(repo_root, pipeline_root):
     lines.append("| Smoke corrected fields | {} |".format(smoke_count))
     lines.append("| Latest artifact time | {} |".format(fmt_time(latest_artifact_time)))
     lines.append("")
-    lines.append("## Quick Visualization")
+
+    lines.append("### Artifact Overview")
     lines.append("")
     lines.append("```mermaid")
     lines.append("pie title Artifact Counts")
@@ -79,7 +88,8 @@ def build_report(repo_root, pipeline_root):
     lines.append('    "Smoke corrected" : {}'.format(smoke_count))
     lines.append("```")
     lines.append("")
-    lines.append("## Training Metrics")
+
+    lines.append("### Training Metrics")
     lines.append("")
     if metrics:
         for key in [
@@ -97,6 +107,29 @@ def build_report(repo_root, pipeline_root):
     else:
         lines.append("- No `train_metrics.json` found yet.")
     lines.append("")
+
+    lines.append("## Results")
+    lines.append("")
+    if not results or not results.get("samples"):
+        lines.append("- No visual results generated yet.")
+        lines.append("- Run: `scripts/generate_result_visuals.py` then update this report.")
+    else:
+        lines.append("Generated result samples: **{}**".format(results.get("n_samples", len(results["samples"]))))
+        lines.append("")
+        for s in results["samples"]:
+            sid = s.get("sample_id", "unknown")
+            rb = s.get("baseline_rmse_land")
+            rc = s.get("corrected_rmse_land")
+            imp = s.get("improvement_rmse_land")
+            lines.append("### {}".format(sid))
+            lines.append("")
+            lines.append("- Land RMSE baseline: `{}`".format("n/a" if rb is None else round(rb, 4)))
+            lines.append("- Land RMSE corrected: `{}`".format("n/a" if rc is None else round(rc, 4)))
+            lines.append("- RMSE improvement: `{}`".format("n/a" if imp is None else round(imp, 4)))
+            lines.append("")
+            lines.append("![{}]({})".format(sid, s.get("image", "")))
+            lines.append("")
+
     lines.append("## Pipeline Paths")
     lines.append("")
     lines.append("- Pipeline root: `{}`".format(pipeline_root))
@@ -121,6 +154,7 @@ def build_report(repo_root, pipeline_root):
                 "smoke_corrected_count": smoke_count,
                 "latest_artifact_utc": fmt_time(latest_artifact_time),
                 "metrics": metrics,
+                "results_summary": results,
                 "pipeline_root": pipeline_root,
             },
             f,
@@ -134,12 +168,14 @@ def main():
     ap.add_argument("--repo-root", default=".")
     ap.add_argument(
         "--pipeline-root",
-        default="/lustre/swx/users/3258/sandbox/systhetic_tc_downscale",
+        default=None,
+        help="Defaults to $TC_PIPELINE_ROOT or Darwin project path.",
     )
     args = ap.parse_args()
 
     repo_root = str(Path(args.repo_root).resolve())
-    build_report(repo_root, args.pipeline_root)
+    pipeline_root = resolve_pipeline_root(args.pipeline_root)
+    build_report(repo_root, pipeline_root)
 
 
 if __name__ == "__main__":

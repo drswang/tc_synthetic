@@ -3,11 +3,11 @@
   "samples": [
     {
       "baseline_rmse_land": 8.138866424560547,
-      "corrected_rmse_land": 0.38896644115448,
+      "corrected_rmse_land": 0.3612300157546997,
       "image": "figures/AL012001_0605_1930_compare.png",
-      "improvement_rmse_land": 7.749899983406067,
+      "improvement_rmse_land": 7.777636408805847,
       "sample_id": "AL012001_0605_1930"
     }
   ],
-  "updated_utc": "2026-03-06 03:08 UTC"
+  "updated_utc": "2026-04-16 20:03 UTC"
 }
