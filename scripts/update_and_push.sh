@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
-REPO_ROOT=${REPO_ROOT:-/lustre/swx/users/3258/sandbox/tc_synthetic}
+REPO_ROOT=${REPO_ROOT:-/lustre/swx/users/3258/sandbox/synthetic_tc_downscale/progress_report}
 CONFIG_FILE="$REPO_ROOT/config/pipeline_paths.env"
 
 if [[ -f "$CONFIG_FILE" ]]; then
@@ -11,7 +11,7 @@ if [[ -f "$CONFIG_FILE" ]]; then
   set +a
 fi
 
-PIPE_ROOT=${PIPE_ROOT:-${TC_PIPELINE_ROOT:-/lustre/swx/users/3258/sandbox/systhetic_tc_downscale}}
+PIPE_ROOT=${PIPE_ROOT:-${TC_PIPELINE_ROOT:-/lustre/swx/users/3258/sandbox/synthetic_tc_downscale}}
 PYTHON=${PYTHON:-${TC_PYTHON_BIN:-/lustre/swx/sw/anaconda-envs-pool/jupyter-notebook/shwang-tcsynthetic/bin/python}}
 MAX_SAMPLES=${MAX_SAMPLES:-2}
 

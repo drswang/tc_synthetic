@@ -30,7 +30,7 @@ def load_model(path):
 def resolve_pipeline_root(cli_value):
     if cli_value:
         return cli_value
-    return os.environ.get("TC_PIPELINE_ROOT", "/lustre/swx/users/3258/sandbox/systhetic_tc_downscale")
+    return os.environ.get("TC_PIPELINE_ROOT", "/lustre/swx/users/3258/sandbox/synthetic_tc_downscale")
 
 
 def resolve_hwind_root(cli_value):
